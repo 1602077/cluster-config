@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: apps
-  namespace: core
+  name: argo-cd
+  namespace: argocd
 spec:
-  project: core
+  project: default
   source:
     repoURL: https://github.com/1602077/gitops-argo
     targetRevision: HEAD
-    path: components
+    path: boostrap/argocd
   destination:
     server: https://kubernetes.default.svc
