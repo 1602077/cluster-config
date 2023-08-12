@@ -1,0 +1,13 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: apps
+  namespace: core
+spec:
+  project: core
+  source:
+    repoURL: https://github.com/1602077/gitops-argo
+    targetRevision: HEAD
+    path: components
+  destination:
+    server: https://kubernetes.default.svc
