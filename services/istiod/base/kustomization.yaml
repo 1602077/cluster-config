@@ -5,8 +5,8 @@ helmGlobals:
   chartHome: ../../../charts
 
 helmCharts:
-- name: istio-base
+- name: istiod
   includeCRDs: false
-  releaseName: istio-base
+  releaseName: istiod
   namespace: istio-system
-  repo: istio-base
+  repo: istiod
