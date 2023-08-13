@@ -16,7 +16,7 @@ cd "${0%/*}/.." # run from root of repo.
 
 print-header "bootstrapping cluster"
 
-kubectl kustomize ./bootstrap/argocd/base/ | kubectl apply -f -
+kubectl kustomize ./bootstrap/argocd/overlays/default/ | kubectl apply -f -
 
 print-header "waiting for argo-cd server to initialise"
 

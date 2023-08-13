@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/1602077/gitops-argo.git
     targetRevision: HEAD
-    path: services/istiod
+    path: services/istiod/base
   destination:
     server: https://kubernetes.default.svc
     namespace: istio-system
