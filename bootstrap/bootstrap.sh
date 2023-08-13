@@ -37,5 +37,6 @@ print-header "registering ${GITHUB_REPO} to argo"
 argocd repo add ${GITHUB_REPO}
 
 print-header "creating argo components"
-kubectl apply -f ./component/gitops-controller/
-# kubectl apply -f ./component/app/
+kubectl apply -f ./components/main.yaml
+kubectl apply -f ./components/gitops-controller/
+kubectl apply -f ./components/apps/
