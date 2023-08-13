@@ -8,6 +8,6 @@ spec:
   source:
     repoURL: https://github.com/1602077/gitops-argo
     targetRevision: HEAD
-    path: boostrap/argocd
+    path: bootstrap/argocd
   destination:
     server: https://kubernetes.default.svc
