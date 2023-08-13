@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/1602077/gitops-argo.git
     targetRevision: HEAD
-    path: components/apps
+    path: components/
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
