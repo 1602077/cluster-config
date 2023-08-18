@@ -11,14 +11,11 @@ Some useful starting points
 # directory structure
 ```bash
 ├── bootstrap
-├── clusters
 ├── components
 └── services
 ```
 
 * bootstrap: contains the resources required in setting up a cluster pre-argo installation. This typically will install argo-cd and hereby will contain argo helm chart, RBAC roles and service accounts etc. Sometimes these steps will be done manually and then get argo to manage argo.
-
-* clusters: contains the configuration for each cluster as defined in `argo`. This allows for control of what gets deployed to each cluster (i.e. `/cluster/gke.prod` can be set up to apply production `kustomize` overlays.
 
 * components / apps: contains the `argo` applications and application set definitions.
 
