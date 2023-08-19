@@ -1,4 +1,4 @@
-# services
+# services
 
 Contains the kubernetes charts, manifests, kustomize objects etc. that will be
 deployable. As to which services are deployed and their config, this is
