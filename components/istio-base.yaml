@@ -1,22 +1,30 @@
 apiVersion: argoproj.io/v1alpha1
-kind: Application
+kind: ApplicationSet
 metadata:
   name: istio-base
   namespace: argocd
 spec:
-  project: default
-  source:
-    repoURL: https://github.com/1602077/gitops-argo.git
-    targetRevision: HEAD
-    path: services/istio-base/base
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: istio-system
-  syncPolicy:
-    automated:
-      allowEmpty: true
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
-
+  generators:
+  - clusters:
+      selector:
+        matchLabels:
+          infra.istio: "enabled"
+  template:
+    metadata:
+      name: istio
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/1602077/gitops-argo.git
+        targetRevision: HEAD
+        path: services/istio-base/base
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: istio-system
+      syncPolicy:
+        automated:
+          allowEmpty: true
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
