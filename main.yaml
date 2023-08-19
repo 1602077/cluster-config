@@ -21,4 +21,34 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
-
+---
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: clusters
+  namespace: argocd
+spec:
+  generators:
+  - clusters:
+      selector:
+        matchLabels:
+          infra.crossplane: "enabled"
+  template:
+    metadata:
+      name: clusters
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/1602077/gitops-argo.git
+        targetRevision: HEAD
+        path: clusters/
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: argocd
+      syncPolicy:
+        automated:
+          allowEmpty: true
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true

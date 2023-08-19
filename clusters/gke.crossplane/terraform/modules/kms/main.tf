@@ -10,16 +10,9 @@ resource "google_kms_crypto_key" "key" {
   key_ring        = google_kms_key_ring.keyring.id
   rotation_period = var.kms_rotation_period
 
-
   version_template {
     algorithm = var.kms_algorithm
   }
-
-  /*
-  lifecycle {
-    prevent_destroy = false
-  }
-  */
 }
 
 resource "google_kms_crypto_key_iam_binding" "crypto_key" {

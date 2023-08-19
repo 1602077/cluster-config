@@ -20,7 +20,7 @@ spec:
         path: services/crossplane/base
       destination:
         server: https://kubernetes.default.svc
-        namespace: argocd
+        namespace: crossplane-system
       syncPolicy:
         automated:
           allowEmpty: true
