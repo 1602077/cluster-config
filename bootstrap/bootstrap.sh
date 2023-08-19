@@ -38,4 +38,3 @@ argocd repo add ${GITHUB_REPO}
 
 print-header "creating argo components"
 kubectl apply -f ./main.yaml
-# kubectl apply -f ./components/
