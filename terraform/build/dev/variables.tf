@@ -3,6 +3,11 @@ variable "project_id" {
   type        = string
 }
 
+variable "zone" {
+  description = "zone that cluster is located in. HA setup not required as only testing"
+  type        = string
+}
+
 variable "region" {
   description = "region that cluster and vpc are located in"
   type        = string
@@ -10,24 +15,21 @@ variable "region" {
 
 variable "cluster_name" {
   description = "name of cluster, unique within project & zone"
-  default     = "primary"
   type        = string
 }
 
 
 variable "primary_node_count" {
   description = "initial node count of primary node pool"
-  default     = 1
+  type        = string
 }
 
 variable "vpc_name" {
   description = "shared vpc for project"
-  default     = "gitops-argo-testing"
   type        = string
 }
 
 variable "subnet_name" {
   description = "vpc subnet for project"
-  default     = "gitops-argo-testing-subnet"
   type        = string
 }

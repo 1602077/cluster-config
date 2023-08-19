@@ -1,4 +1,3 @@
-
 terraform {
   required_version = ">= 0.14.0"
 
@@ -20,6 +19,9 @@ provider "google" {
   region  = var.region
 }
 
+# #####################################################
+# VPC
+# #####################################################
 module "vpc" {
   source = "../../modules/vpc"
 
@@ -29,12 +31,19 @@ module "vpc" {
   subnet_name = var.subnet_name
 }
 
-module "gke_cluster" {
+# #####################################################
+# GOOGLE KUBERNETES ENGINE
+# #####################################################
+module "gke" {
   source = "../../modules/gke"
 
-  project_id  = var.project_id
-  region      = var.region
-  vpc_name    = var.vpc_name
-  subnet_name = var.subnet_name
+  // cluster
+  cluster_name = var.cluster_name
+  project_id   = var.project_id
+  zone         = var.zone
+  vpc_name     = var.vpc_name
+  subnet_name  = var.subnet_name
 
+  // node pools
+  primary_node_count = 1
 }
