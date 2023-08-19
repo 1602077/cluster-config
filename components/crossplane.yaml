@@ -8,13 +8,10 @@ spec:
   - clusters:
       selector:
         matchLabels:
-          infra: "crossplane"
+          infra.crossplane: "enabled"
   template:
     metadata:
       name: crossplane
-      namespace: argocd
-      metadata:
-        infra: crossplane
     spec:
       project: default
       source:

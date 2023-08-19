@@ -23,7 +23,7 @@ provider "google" {
 # VPC
 # #####################################################
 module "vpc" {
-  source = "../../modules/vpc"
+  source = "../modules/vpc"
 
   project_id  = var.project_id
   region      = var.region
@@ -35,7 +35,7 @@ module "vpc" {
 # GOOGLE KUBERNETES ENGINE
 # #####################################################
 module "gke" {
-  source = "../../modules/gke"
+  source = "../modules/gke"
 
   // cluster
   cluster_name = var.cluster_name
