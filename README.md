@@ -11,9 +11,10 @@ Some useful starting points
 # directory structure
 ```bash
 ├── bootstrap
-├── clusters
 ├── components
-└── services
+├── clusters
+├── services
+└── terraform
 ```
 
 * bootstrap: contains the resources required in setting up a cluster pre-argo installation. This typically will install argo-cd and hereby will contain argo helm chart, RBAC roles and service accounts etc. Sometimes these steps will be done manually and then get argo to manage argo.
@@ -23,3 +24,5 @@ Some useful starting points
 * components / apps: contains the `argo` applications and application set definitions.
 
 * services: contains the deployable kubernetes objects i.e. kustomize manifests, helm charts etc. In some cases a distinction is made between an app (i.e. your web-app) and a service (i.e. prometheus), although this is somewhat artificial and more of a matter of personal taste.
+
+* terraform: modules for provisioning a private gke cluster to run `crossplane`.
