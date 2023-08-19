@@ -4,6 +4,18 @@
 project_id = "gitops-argo"
 region     = "europe-west2"
 zone       = "europe-west2-a"
+gcp_service_list = [
+  "autoscaling.googleapis.com",
+  "cloudkms.googleapis.com",
+  "compute.googleapis.com",
+  "container.googleapis.com",
+  "dns.googleapis.com",
+  "logging.googleapis.com",
+  "monitoring.googleapis.com",
+  "networkconnectivity.googleapis.com",
+  "serviceusage.googleapis.com"
+]
+
 
 
 # ############################################################################
