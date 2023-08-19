@@ -6,6 +6,10 @@ terraform {
       source  = "hashicorp/google"
       version = "4.74.0"
     }
+
+    kubernetes = {
+      source = "hashicorp/kubernetes"
+    }
   }
 
   backend "gcs" {
@@ -32,10 +36,27 @@ module "vpc" {
 }
 
 # #####################################################
+# KMS
+# #####################################################
+module "kms" {
+  source = "../modules/kms"
+
+  region              = var.region
+  kms_key_name        = var.kms_key_name
+  kms_ring_name       = var.kms_ring_name
+  kms_algorithm       = var.kms_algorithm
+  kms_rotation_period = var.kms_rotation_period
+}
+
+# #####################################################
 # GOOGLE KUBERNETES ENGINE
 # #####################################################
 module "gke" {
   source = "../modules/gke"
+  depends_on = [
+    module.vpc,
+    module.kms
+  ]
 
   // cluster
   cluster_name = var.cluster_name
@@ -46,4 +67,17 @@ module "gke" {
 
   // node pools
   primary_node_count = 1
+
+  // security
+  gke_crypto_key_name = module.kms.google_kms_crypto_key_name
+}
+
+# #####################################################
+# SOFTWARE / CROSSPLANE CONFIG
+# #####################################################
+module "sofware-crossplane" {
+  source = "../software/crossplane"
+
+  cluster_name = var.cluster_name
+  zone         = var.zone
 }
