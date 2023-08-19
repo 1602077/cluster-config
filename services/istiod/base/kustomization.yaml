@@ -6,7 +6,7 @@ helmGlobals:
 
 helmCharts:
 - name: istiod
-  includeCRDs: false
+  includeCRDs: true
   releaseName: istiod
   namespace: istio-system
   repo: istiod

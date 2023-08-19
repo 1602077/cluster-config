@@ -6,7 +6,7 @@ helmGlobals:
 
 helmCharts:
 - name: istio-base
-  includeCRDs: false
+  includeCRDs: true
   releaseName: istio-base
   namespace: istio-system
   repo: istio-base

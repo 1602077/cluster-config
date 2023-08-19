@@ -1,0 +1,34 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: crossplane
+  namespace: argocd
+spec:
+  generators:
+  - clusters:
+      selector:
+        matchLabels:
+          infra: "crossplane"
+  template:
+    metadata:
+      name: crossplane
+      namespace: argocd
+      metadata:
+        infra: crossplane
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/1602077/gitops-argo.git
+        targetRevision: HEAD
+        path: services/crossplane/base
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: argocd
+      syncPolicy:
+        automated:
+          allowEmpty: true
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+
