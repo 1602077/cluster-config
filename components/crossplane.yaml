@@ -1,3 +1,6 @@
+# Deploys crossplane to clusters that have the `infra.crossplane: "enabled"`
+# label. There should currently be only one cluster running crossplane in this
+# multi-cluster setup.
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
