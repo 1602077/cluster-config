@@ -1,5 +1,11 @@
 #!/bin/bash
 # bootstraps an argo-cd managed cluster.
+#
+# Assumes cluster has already been provisioned: terraform build manifests for
+# a GKE cluster are in `/clusters/gke.crossplane/terraform`.
+#
+# cluster runs crossplane acting as a "control-plane" for provisioning of
+# additional clusters on GKE that will run production workloads.
 
 function exit_trap() { echo -e "\n$0:${BASH_LINENO[0]} '$BASH_COMMAND' failed" >&2; }
 function print-header() { echo -e "\033[31m>> $@\033[0m"; }
