@@ -15,7 +15,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/1602077/gitops-argo.git
+        repoURL: https://github.com/1602077/cluster-config.git
         targetRevision: HEAD
         path: services/istiod/base
       destination:

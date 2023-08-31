@@ -1,4 +1,4 @@
-# gitops-argo
+# cluster-config
 
 Bootstrapping workflow for a delineated kubernetes multi-cluster architecture
 with a control-plane ("master") and worker clusters.

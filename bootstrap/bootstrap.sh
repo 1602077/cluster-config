@@ -15,7 +15,7 @@ set -eoa pipefail
 
 # ----------------------------------------------------------------------------
 
-GITHUB_REPO=${GITHUB_REPO:="https://github.com/1602077/gitops-argo"}
+GITHUB_REPO=${GITHUB_REPO:="https://github.com/1602077/cluster-config"}
 ARGO_PORT=${ARGO_PORT:="8080"}
 
 cd "${0%/*}/.." # run from root of repo.
