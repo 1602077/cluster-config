@@ -20,7 +20,7 @@ spec:
       source:
         repoURL: https://github.com/1602077/gitops-argo.git
         targetRevision: feat/crossplane
-        path: services/crossplane/base
+        path: services/crossplane/overlays/gke
       destination:
         server: https://kubernetes.default.svc
         namespace: crossplane-system

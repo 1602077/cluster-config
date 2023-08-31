@@ -6,6 +6,11 @@ spec:
   projectID: gitops-argo
   credentials:
     source: Secret
+    # GCP credential secret will need to be provisioned manually.
+    #
+    # kubectl create secret generic gcp-secret \
+    #   -n crossplane-system \
+    #   --from-file=creds=./gcp-credentials.json
     secretRef:
       namespace: crossplane-system
       name: gcp-secret
