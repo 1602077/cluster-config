@@ -7,10 +7,10 @@
 # cluster runs crossplane acting as a "control-plane" for provisioning of
 # additional clusters on GKE that will run production workloads.
 
-function exit_trap() { echo -e "\n$0:${BASH_LINENO[0]} '$BASH_COMMAND' failed" >&2; }
+function exit() { echo -e "\n$0:${BASH_LINENO[0]} '$BASH_COMMAND' failed" >&2; }
 function print-header() { echo -e "\033[31m>> $@\033[0m"; }
 
-trap exit_trap ERR
+trap exit ERR
 set -eoa pipefail
 
 # ----------------------------------------------------------------------------
@@ -22,7 +22,7 @@ cd "${0%/*}/.." # run from root of repo.
 
 print-header "bootstrapping cluster"
 
-kubectl kustomize ./bootstrap/argocd/overlays/default/ | kubectl apply -f -
+kubectl apply -k ./bootstrap/argocd/overlays/default/
 
 print-header "waiting for argo-cd server to initialise"
 
