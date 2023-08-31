@@ -1,4 +1,4 @@
-# terraform
+# infra
 
 terraform modules to provision a private gke cluster on an isolated vpc. This 
 cluster runs `crossplane` (managed via `argo`) and this is used to provision 

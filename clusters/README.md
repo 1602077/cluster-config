@@ -1,9 +1,8 @@
-# clusters
+# infra
 
-Contains either `terraform` or `crossplane` configuration for clusters being 
-managed.
+terraform modules to provision a private gke cluster on an isolated vpc. This 
+cluster runs `crossplane` (managed via `argo`) and this is used to provision 
+clusters where actual workloads will run on them.
 
-As aforementioned a control-plane and worker cluster setup is used. The 
-control-plane cluster is managed via terraform as a bootstrap and it controls
-the provisioning of all worker clusters (clusters where workloads are run on)
-using `crossplane`.
+All workload cluster configuration is therefore defined in `/clusters`.
+
