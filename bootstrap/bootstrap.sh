@@ -43,7 +43,7 @@ print-header "registering ${GITHUB_REPO} to argo"
 argocd repo add ${GITHUB_REPO}
 
 print-header "creating argo components"
-kubectl apply -f ./main.yaml
+kubectl apply -f ./bootstrap/main.yaml
 
 # TODO (jack): Additional steps to automate.
 # 1. Labelling of clusters in argo i.e. infra.crossplane: enabled
