@@ -12,6 +12,11 @@ resource "google_container_cluster" "crossplane" {
   network                  = var.vpc_name
   subnetwork               = var.subnet_name
 
+  database_encryption {
+    state    = "ENCRYPTED"
+    key_name = var.gke_crypto_key_name
+  }
+
   private_cluster_config {
     enable_private_endpoint = true
     enable_private_nodes    = true
@@ -28,7 +33,10 @@ resource "google_container_cluster" "crossplane" {
       cidr_block   = "10.0.0.7/32"
       display_name = "net1"
     }
+  }
 
+  workload_identity_config {
+    workload_pool = "${var.project_id}.svc.id.goog"
   }
 }
 
@@ -44,6 +52,7 @@ resource "google_container_node_pool" "primary_nodes" {
     min_node_count = "0"
     max_node_count = "3"
   }
+
 
   management {
     auto_repair  = "true"
@@ -63,8 +72,17 @@ resource "google_container_node_pool" "primary_nodes" {
     preemptible  = true
     machine_type = "n1-standard-2"
     tags         = ["gke-node", "${var.project_id}-gke"]
+
     metadata = {
       disable-legacy-endpoints = "true"
     }
+  }
+
+  lifecycle {
+    ignore_changes = [
+      initial_node_count,
+      node_count,
+      version
+    ]
   }
 }

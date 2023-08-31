@@ -1,3 +1,6 @@
+# Deploys crossplane to clusters that have the `infra.crossplane: "enabled"`
+# label. There should currently be only one cluster running crossplane in this
+# multi-cluster setup.
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
@@ -20,12 +23,12 @@ spec:
         path: services/crossplane/base
       destination:
         server: https://kubernetes.default.svc
-        namespace: argocd
+        namespace: crossplane-system
       syncPolicy:
         automated:
           allowEmpty: true
           prune: true
           selfHeal: true
         syncOptions:
-          - CreateNamespace=true
+        - CreateNamespace=true
 

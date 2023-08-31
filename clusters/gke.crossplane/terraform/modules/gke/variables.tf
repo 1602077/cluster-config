@@ -22,3 +22,7 @@ variable "vpc_name" {
 variable "subnet_name" {
   description = "vpc subnet for project"
 }
+
+variable "gke_crypto_key_name" {
+  description = "name of kms encryption key used to encrypt etcd"
+}
