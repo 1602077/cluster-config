@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/1602077/gitops-argo.git
-    targetRevision: feat/crossplane
+    targetRevision: HEAD
     path: components/
   destination:
     server: https://kubernetes.default.svc
@@ -40,7 +40,7 @@ spec:
       project: default
       source:
         repoURL: https://github.com/1602077/gitops-argo.git
-        targetRevision: feat/crossplane
+        targetRevision: HEAD
         path: clusters/
       destination:
         server: https://kubernetes.default.svc

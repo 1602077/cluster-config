@@ -1,9 +1,9 @@
 # clusters
 
-Contains cluster specific config controlling which `/components` are deployed
-and what overlays to apply for each cluster.
+Contains either `terraform` or `crossplane` configuration for clusters being 
+managed.
 
-If using a service like `crossplane` this can contain the definitions for all
-clusters.
-
-<!-- TODO (jack, 13/08/2023): Create minkube.local & gke.dev clusters. --> 
+As aforementioned a control-plane and worker cluster setup is used. The 
+control-plane cluster is managed via terraform as a bootstrap and it controls
+the provisioning of all worker clusters (clusters where workloads are run on)
+using `crossplane`.

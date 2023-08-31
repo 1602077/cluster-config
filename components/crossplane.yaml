@@ -19,7 +19,7 @@ spec:
       project: default
       source:
         repoURL: https://github.com/1602077/gitops-argo.git
-        targetRevision: feat/crossplane
+        targetRevision: HEAD
         path: services/crossplane/base
       destination:
         server: https://kubernetes.default.svc

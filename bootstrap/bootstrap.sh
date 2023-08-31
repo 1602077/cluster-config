@@ -44,3 +44,10 @@ argocd repo add ${GITHUB_REPO}
 
 print-header "creating argo components"
 kubectl apply -f ./main.yaml
+
+# TODO (jack): Additional steps to automate.
+# 1. Labelling of clusters in argo i.e. infra.crossplane: enabled
+# 2. Creation of gcp-secret credentials for crossplane
+# 3. Deploying upbound provider config from clusters/gke.crossplane/manifests
+#
+# Should investigate using terraform for this
