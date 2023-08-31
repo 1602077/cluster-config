@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/1602077/gitops-argo.git
-    targetRevision: HEAD
+    targetRevision: feat/crossplane
     path: components/
   destination:
     server: https://kubernetes.default.svc
@@ -20,7 +20,7 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-      - CreateNamespace=true
+    - CreateNamespace=true
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
@@ -40,7 +40,7 @@ spec:
       project: default
       source:
         repoURL: https://github.com/1602077/gitops-argo.git
-        targetRevision: HEAD
+        targetRevision: feat/crossplane
         path: clusters/
       destination:
         server: https://kubernetes.default.svc
@@ -51,4 +51,4 @@ spec:
           prune: true
           selfHeal: true
         syncOptions:
-          - CreateNamespace=true
+        - CreateNamespace=true
