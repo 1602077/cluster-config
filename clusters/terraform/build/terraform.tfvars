@@ -35,3 +35,12 @@ kms_key_name        = "gitops_argo_keyring"
 kms_ring_name       = "crypto-gitops-argo"
 kms_algorithm       = "GOOGLE_SYMMETRIC_ENCRYPTION"
 kms_rotation_period = "2592000s" // 30 days
+
+# #####################################################
+# IAM
+# #####################################################
+iam_crossplane_service_account_name = "gitops-argo-crossplane"
+iam_crossplane_service_account_permissions = [
+  "roles/container.clusterAdmin",
+  "roles/compute.networkAdmin",
+]
