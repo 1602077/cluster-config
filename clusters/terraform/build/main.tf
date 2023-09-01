@@ -25,14 +25,6 @@ provider "google" {
 data "google_client_config" "provider" {}
 
 
-provider "kubernetes" {
-  host  = "https://${data.google_container_cluster.crossplane.endpoint}"
-  token = data.google_client_config.provider.access_token
-  cluster_ca_certificate = base64decode(
-    data.google_container_cluster.crossplane.master_auth[0].cluster_ca_certificate,
-  )
-}
-
 # #####################################################
 # GCP APIS
 # #####################################################
@@ -53,7 +45,7 @@ module "iam" {
   iam_crossplane_service_account_name        = var.iam_crossplane_service_account_name
   iam_crossplane_service_account_permissions = var.iam_crossplane_service_account_permissions
 }
-/*
+
 # #####################################################
 # VPC
 # #####################################################
@@ -114,11 +106,23 @@ data "google_container_cluster" "crossplane" {
   location = var.zone
 }
 
+provider "kubernetes" {
+  host  = "https://${data.google_container_cluster.crossplane.endpoint}"
+  token = data.google_client_config.provider.access_token
+  cluster_ca_certificate = base64decode(
+    data.google_container_cluster.crossplane.master_auth[0].cluster_ca_certificate,
+  )
+}
+
 module "sofware-crossplane" {
-  source     = "../software/crossplane"
-  depends_on = [module.gke]
+  source = "../software/crossplane"
+  depends_on = [
+    module.gke,
+    module.iam
+  ]
 
   cluster_name = var.cluster_name
   zone         = var.zone
+
+  crossplane_service_account_key = module.iam.crossplane_service_account_key
 }
-*/

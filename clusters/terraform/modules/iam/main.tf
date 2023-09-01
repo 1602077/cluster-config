@@ -9,3 +9,8 @@ resource "google_project_iam_member" "crossplane_sa_perms" {
   member   = "serviceAccount:${google_service_account.crossplane_sa.email}"
   role     = each.value
 }
+
+resource "google_service_account_key" "crossplane" {
+  service_account_id = google_service_account.crossplane_sa.name
+  public_key_type    = "TYPE_X509_PEM_FILE"
+}
