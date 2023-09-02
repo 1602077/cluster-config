@@ -9,7 +9,7 @@ spec:
   project: default
   source:
     repoURL: https://github.com/1602077/cluster-config.git
-    targetRevision: HEAD
+    targetRevision: deploy/istio-ingress
     path: apps/
   destination:
     server: https://kubernetes.default.svc

@@ -1,0 +1,13 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+helmGlobals:
+  chartHome: ../../charts
+
+helmCharts:
+- name: istio-gateway
+  includeCRDs: true
+  releaseName: istio-gateway
+  namespace: istio-ingress
+  repo: istio-gateway
+
