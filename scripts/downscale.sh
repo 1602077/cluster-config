@@ -6,7 +6,8 @@ cd "${0%/*}"
 . ./common/variables.sh
 
 print-header "shutting down bastion host"
-gcloud compute instances stop $BASTION_HOST
+gcloud compute instances stop $BASTION_HOST \
+	--zone $CLUSTER_ZONE
 
 print-header "disabling cluster autoscaler and resizing node pool"
 gcloud container clusters update $CLUSTER_CROSSPLANE_NAME \
