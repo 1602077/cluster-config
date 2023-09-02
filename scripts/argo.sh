@@ -13,7 +13,6 @@ cd "${0%/*}"
 # ----------------------------------------------------------------------------
 
 cd .. # run from root of repo.
-# export HTTPS_PROXY=localhost:8888
 GITHUB_REPO=${GITHUB_REPO:="https://github.com/1602077/cluster-config"}
 ARGO_PORT=${ARGO_PORT:="8080"}
 
