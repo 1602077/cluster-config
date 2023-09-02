@@ -7,8 +7,6 @@ spec:
   hosts:
   - "*"
   gateways:
-  - public-gateway.istio-ingress.svc.cluster.local
-  # - mesh
   - istio-ingress/public-gateway
   http:
   - match:

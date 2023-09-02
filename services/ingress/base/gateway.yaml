@@ -9,7 +9,7 @@ spec:
   servers:
   - port:
       number: 80
-      name: http
+      name: http2
       protocol: HTTP
     hosts:
     - "*"
