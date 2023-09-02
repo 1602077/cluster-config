@@ -1,0 +1,30 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: ingress
+  namespace: argocd
+spec:
+  generators:
+  - clusters:
+      selector:
+        matchLabels:
+          infra.istio: "enabled"
+  template:
+    metadata:
+      name: ingress
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/1602077/cluster-config.git
+        targetRevision: deploy/istio-ingress
+        path: services/ingress/base
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: istio-ingress
+      syncPolicy:
+        automated:
+          allowEmpty: true
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
