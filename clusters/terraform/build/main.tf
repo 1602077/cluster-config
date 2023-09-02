@@ -60,6 +60,19 @@ module "vpc" {
 }
 
 # #####################################################
+# NAT GATEWAY
+# #####################################################
+module "nat" {
+  source     = "../modules/nat/"
+  depends_on = [module.vpc]
+
+  project_id      = var.project_id
+  nat_router_name = var.nat_router_name
+  region          = var.region
+  vpc_name        = var.vpc_name
+}
+
+# #####################################################
 # FIREWALL
 # #####################################################
 module "firewall" {

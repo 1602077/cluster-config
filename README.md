@@ -21,5 +21,5 @@ to me in [A Multi-Cluster, Multi-Cloud Infrastructure with GitOps at CERN - Rica
 * `https://developers.redhat.com/articles/2022/09/07/how-set-your-gitops-directory-structure#structuring_your_git_repositories`
 * `https://github.com/gnunn-gitops/standards/blob/master/folders.md`
 
-TODO
-https://medium.com/google-cloud/gcp-how-to-deploy-cloud-nat-with-terraform-44745a4daaa8
+TODO (jack):
+* istio firewall rules

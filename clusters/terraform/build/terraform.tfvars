@@ -48,5 +48,6 @@ primary_node_count = 1
 # ############################################################################
 # NETWORKING
 # ############################################################################
-vpc_name    = "crossplane-vpc"
-subnet_name = "crossplane-subnet"
+vpc_name        = "crossplane-vpc"
+subnet_name     = "crossplane-subnet"
+nat_router_name = "crossplane-nat"

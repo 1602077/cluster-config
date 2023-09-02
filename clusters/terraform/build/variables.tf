@@ -90,3 +90,8 @@ variable "bastion_host_machine_type" {
   description = "gcp machine instance for bastion host vm"
   type        = string
 }
+
+variable "nat_router_name" {
+  description = "name of NAT router"
+  type        = string
+}

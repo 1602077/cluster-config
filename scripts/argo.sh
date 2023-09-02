@@ -7,8 +7,8 @@
 # cluster runs crossplane acting as a "control-plane" for provisioning of
 # additional clusters on GKE that will run production workloads.
 cd "${0%/*}"
-. ./bootstrap/common/errors.sh
-. ./bootstrap/common/print.sh
+. ./common/errors.sh
+. ./common/print.sh
 
 # ----------------------------------------------------------------------------
 
@@ -40,6 +40,3 @@ argocd repo add ${GITHUB_REPO}
 
 print-header "creating argo components"
 kubectl apply -f ./main.yaml
-
-# TODO (jack): Additional steps to automate.
-# 1. Labelling of clusters in argo i.e. infra.crossplane: enabled
