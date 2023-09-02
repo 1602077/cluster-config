@@ -6,20 +6,16 @@
 #
 # cluster runs crossplane acting as a "control-plane" for provisioning of
 # additional clusters on GKE that will run production workloads.
-
-function exit() { echo -e "\n$0:${BASH_LINENO[0]} '$BASH_COMMAND' failed" >&2; }
-function print-header() { echo -e "\033[31m>> $@\033[0m"; }
-
-trap exit ERR
-set -eoa pipefail
+cd "${0%/*}"
+. ./bootstrap/common/errors.sh
+. ./bootstrap/common/print.sh
 
 # ----------------------------------------------------------------------------
 
+cd .. # run from root of repo.
 # export HTTPS_PROXY=localhost:8888
 GITHUB_REPO=${GITHUB_REPO:="https://github.com/1602077/cluster-config"}
 ARGO_PORT=${ARGO_PORT:="8080"}
-
-cd "${0%/*}/.." # run from root of repo.
 
 print-header "bootstrapping cluster"
 
@@ -44,11 +40,7 @@ print-header "registering ${GITHUB_REPO} to argo"
 argocd repo add ${GITHUB_REPO}
 
 print-header "creating argo components"
-kubectl apply -f ./bootstrap/main.yaml
+kubectl apply -f ./main.yaml
 
 # TODO (jack): Additional steps to automate.
 # 1. Labelling of clusters in argo i.e. infra.crossplane: enabled
-# 2. Creation of gcp-secret credentials for crossplane
-# 3. Deploying upbound provider config from clusters/gke.crossplane/manifests
-#
-# Should investigate using terraform for this

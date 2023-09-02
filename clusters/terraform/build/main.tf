@@ -100,7 +100,6 @@ module "bastion" {
 # #####################################################
 # GOOGLE KUBERNETES ENGINE
 # #####################################################
-/*
 module "gke" {
   source = "../modules/gke"
   depends_on = [
@@ -122,7 +121,6 @@ module "gke" {
   // security
   gke_crypto_key_name = module.kms.google_kms_crypto_key_name
 }
-/*
 
 # #####################################################
 # SOFTWARE / CROSSPLANE CONFIG
