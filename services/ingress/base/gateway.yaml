@@ -2,7 +2,8 @@ apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
   name: public-gateway
-  namespace: istio-ingress
+  # namespace: istio-ingress
+  namespace: argocd
 spec:
   selector:
     istio: gateway
