@@ -5,6 +5,9 @@ cd "${0%/*}"
 . ./common/print.sh
 . ./common/variables.sh
 
+gcloud compute instances start $BASTION_HOST \
+	--zone $CLUSTER_ZONE
+
 print-header "connecting to bastion host"
 gcloud container clusters get-credentials \
 	$CLUSTER_CROSSPLANE_NAME \
