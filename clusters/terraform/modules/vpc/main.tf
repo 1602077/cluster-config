@@ -4,6 +4,7 @@ resource "google_compute_network" "vpc" {
 }
 
 resource "google_compute_subnetwork" "subnet" {
+  depends_on    = [google_compute_network.vpc]
   name          = var.subnet_name
   region        = var.region
   network       = var.vpc_name

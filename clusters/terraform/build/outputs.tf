@@ -8,3 +8,7 @@ output "project_id" {
   description = "GCloud Project ID"
 }
 
+output "crossplane_service_account_key" {
+  value     = module.iam.crossplane_service_account_key
+  sensitive = true
+}
