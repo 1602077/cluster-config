@@ -23,9 +23,11 @@ gcloud compute ssh $BASTION_HOST \
 	--ssh-flag="-4 -L8888:localhost:$HTTPS_PROXY_PORT -N -q -f"
 
 print-header "spawning sub-shell using HTTPS_PROXY"
-HTTPS_PROXY="localhost:8888" /bin/bash
+HTTPS_PROXY="localhost:$HTTPS_PROXY_PORT" \
+	PS1='\e[0;36m($(kubectl config current-context))\e[0m $ ' \
+	/bin/bash
 
-CLEANUP_CMD="ps aux | grep '[8]888' | awk '{print \$2}' | xargs sudo kill"
+CLEANUP_CMD="ps aux | grep '[8]888' | awk '{print \$2}' | xargs kill"
 
 echo "$CLEANUP_CMD" | pbcopy
 
