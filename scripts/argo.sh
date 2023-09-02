@@ -9,13 +9,11 @@
 cd "${0%/*}"
 . ./common/errors.sh
 . ./common/print.sh
+. ./common/variables.sh
 
 # ----------------------------------------------------------------------------
 
 cd .. # run from root of repo.
-GITHUB_REPO=${GITHUB_REPO:="https://github.com/1602077/cluster-config"}
-ARGO_PORT=${ARGO_PORT:="8080"}
-
 print-header "bootstrapping cluster"
 
 kubectl apply -k ./services/argocd/overlays/default/

@@ -3,11 +3,9 @@
 cd "${0%/*}"
 . ./common/errors.sh
 . ./common/print.sh
+. ./common/variables.sh
 
-PROJECT_ID=${PROJECT_ID:="gitops-argo"}
-BASTION_HOST_NAME=${BASTION_HOST_NAME:="cluster-bastion-host"}
-
-gcloud compute ssh $BASTION_HOST_NAME \
+gcloud compute ssh $BASTION_HOST \
 	--tunnel-through-iap \
 	--project=$PROJECT_ID \
 	--command='sudo apt install tinyproxy -y && 
