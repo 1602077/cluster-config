@@ -99,8 +99,23 @@ module "gke" {
 }
 
 # #####################################################
+# BASTION HOST
+# #####################################################
+module "bastion" {
+  source     = "../modules/bastion/"
+  depends_on = [module.vpc]
+
+  bastion_host_name         = var.bastion_host_name
+  bastion_host_machine_type = var.bastion_host_machine_type
+  zone                      = var.zone
+  vpc_name                  = var.vpc_name
+  subnet_name               = var.subnet_name
+}
+
+# #####################################################
 # SOFTWARE / CROSSPLANE CONFIG
 # #####################################################
+/*
 data "google_container_cluster" "crossplane" {
   name     = var.cluster_name
   location = var.zone
@@ -126,3 +141,4 @@ module "sofware-crossplane" {
 
   crossplane_service_account_key = module.iam.crossplane_service_account_key
 }
+*/

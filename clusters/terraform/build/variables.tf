@@ -80,3 +80,13 @@ variable "iam_crossplane_service_account_permissions" {
   description = "permissions assigne to iam_crossplane_service_account_name"
   type        = list(string)
 }
+
+variable "bastion_host_name" {
+  description = "name of bastion host"
+  type        = string
+}
+
+variable "bastion_host_machine_type" {
+  description = "gcp machine instance for bastion host vm"
+  type        = string
+}
