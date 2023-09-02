@@ -34,8 +34,8 @@ iam_crossplane_service_account_permissions = [
 # ############################################################################
 # KMS
 # ############################################################################
-kms_key_name        = "cluster-keyrings"
-kms_ring_name       = "crypto-cluster-ring"
+kms_key_name        = "cluster-keyring"
+kms_ring_name       = "crypto-ring"
 kms_algorithm       = "GOOGLE_SYMMETRIC_ENCRYPTION"
 kms_rotation_period = "2592000s" // 30 days
 

@@ -15,10 +15,11 @@ set -eoa pipefail
 
 # ----------------------------------------------------------------------------
 
+# export HTTPS_PROXY=localhost:8888
 GITHUB_REPO=${GITHUB_REPO:="https://github.com/1602077/cluster-config"}
 ARGO_PORT=${ARGO_PORT:="8080"}
 
-cd "${0%/*}" # run from root of repo.
+cd "${0%/*}/.." # run from root of repo.
 
 print-header "bootstrapping cluster"
 
@@ -43,7 +44,7 @@ print-header "registering ${GITHUB_REPO} to argo"
 argocd repo add ${GITHUB_REPO}
 
 print-header "creating argo components"
-kubectl apply -f ./main.yaml
+kubectl apply -f ./bootstrap/main.yaml
 
 # TODO (jack): Additional steps to automate.
 # 1. Labelling of clusters in argo i.e. infra.crossplane: enabled

@@ -19,6 +19,7 @@ resource "google_compute_instance" "bastion_host" {
   }
 
   scheduling {
-    preemptible = true
+    automatic_restart = false
+    preemptible       = true
   }
 }

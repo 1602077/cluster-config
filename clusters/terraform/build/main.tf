@@ -60,6 +60,16 @@ module "vpc" {
 }
 
 # #####################################################
+# FIREWALL
+# #####################################################
+module "firewall" {
+  source     = "../modules/firewall/"
+  depends_on = [module.vpc]
+
+  vpc_network_name = var.vpc_name
+}
+
+# #####################################################
 # KMS
 # #####################################################
 module "kms" {
@@ -74,8 +84,23 @@ module "kms" {
 }
 
 # #####################################################
+# BASTION HOST
+# #####################################################
+module "bastion" {
+  source     = "../modules/bastion/"
+  depends_on = [module.vpc]
+
+  bastion_host_name         = var.bastion_host_name
+  bastion_host_machine_type = var.bastion_host_machine_type
+  zone                      = var.zone
+  vpc_name                  = var.vpc_name
+  subnet_name               = var.subnet_name
+}
+
+# #####################################################
 # GOOGLE KUBERNETES ENGINE
 # #####################################################
+/*
 module "gke" {
   source = "../modules/gke"
   depends_on = [
@@ -97,20 +122,7 @@ module "gke" {
   // security
   gke_crypto_key_name = module.kms.google_kms_crypto_key_name
 }
-
-# #####################################################
-# BASTION HOST
-# #####################################################
-module "bastion" {
-  source     = "../modules/bastion/"
-  depends_on = [module.vpc]
-
-  bastion_host_name         = var.bastion_host_name
-  bastion_host_machine_type = var.bastion_host_machine_type
-  zone                      = var.zone
-  vpc_name                  = var.vpc_name
-  subnet_name               = var.subnet_name
-}
+/*
 
 # #####################################################
 # SOFTWARE / CROSSPLANE CONFIG
