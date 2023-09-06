@@ -103,8 +103,11 @@ module "bastion" {
   source     = "../modules/bastion/"
   depends_on = [module.vpc]
 
+  project_id = var.project_id
+
   bastion_host_name         = var.bastion_host_name
   bastion_host_machine_type = var.bastion_host_machine_type
+  bastion_host_members      = var.bastion_host_members
   zone                      = var.zone
   vpc_name                  = var.vpc_name
   subnet_name               = var.subnet_name

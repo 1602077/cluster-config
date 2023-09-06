@@ -10,10 +10,13 @@ gcp_service_list = [
   "compute.googleapis.com",
   "container.googleapis.com",
   "dns.googleapis.com",
+  "iap.googleapis.com",
   "logging.googleapis.com",
   "monitoring.googleapis.com",
   "networkconnectivity.googleapis.com",
-  "serviceusage.googleapis.com"
+  "oslogin.googleapis.com",
+  "serviceusage.googleapis.com",
+  "storage-api.googleapis.com"
 ]
 
 # ############################################################################
@@ -35,7 +38,7 @@ iam_crossplane_service_account_permissions = [
 # KMS
 # ############################################################################
 kms_key_name        = "cluster-keyring"
-kms_ring_name       = "crypto-ring"
+kms_ring_name       = "crypto-ring-a"
 kms_algorithm       = "GOOGLE_SYMMETRIC_ENCRYPTION"
 kms_rotation_period = "2592000s" // 30 days
 

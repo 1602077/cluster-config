@@ -91,6 +91,11 @@ variable "bastion_host_machine_type" {
   type        = string
 }
 
+variable "bastion_host_members" {
+  description = "members authorised to log in to bastion host"
+  type        = list(string)
+}
+
 variable "nat_router_name" {
   description = "name of NAT router"
   type        = string
